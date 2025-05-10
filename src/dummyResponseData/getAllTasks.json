@@ -1,0 +1,148 @@
+{
+    "todo":[
+        {
+            "taskId":2929,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush",
+            "priority":"Immediate",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":2333,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti",
+            "priority":"High",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":3222,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan",
+            "priority":"Medium",
+            "dueDate":"2025-05-14"
+        },
+        {
+            "taskId":13122,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush","priority":"Immediate",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":392223,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti","priority":"Immediate",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":102222,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan","priority":"Immediate",
+            "dueDate":"2025-05-14"
+        },
+        {
+            "taskId":13221,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush","priority":"Immediate",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":3222193,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti","priority":"Immediate",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":11210,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan","priority":"Immediate",
+            "dueDate":"2025-05-14"
+        }
+    ],
+    "inprogress":[
+        {
+            "taskId":1,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush",
+            "priority":"Low",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":2,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti",
+            "priority":"Immediate",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":3,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan",
+            "priority":"Immediate",
+            "dueDate":"2025-05-14"
+        }
+    ],
+    "inreview":[
+                {
+            "taskId":59,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush",
+            "priority":"Immediate",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":39,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti",
+            "priority":"Immediate",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":31,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan",
+            "priority":"Immediate",
+            "dueDate":"2025-05-14"
+        }
+    ],
+    "reopened":[
+        {
+            "taskId":10,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush","priority":"Immediate",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":21,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti","priority":"Immediate",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":31,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan","priority":"Immediate",
+            "dueDate":"2025-05-14"
+        }
+    ],
+    "closed":[        
+        {
+            "taskId":131,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Ankush","priority":"Immediate",
+            "dueDate":"2025-05-12"
+        },
+        {
+            "taskId":393,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Banti","priority":"Immediate",
+            "dueDate":"2025-05-16"
+        },
+        {
+            "taskId":10,
+            "taskName":"Implement feedback collector",
+            "assignedTo":"Roshan","priority":"Immediate",
+            "dueDate":"2025-05-14"
+        }
+
+    ]
+}
