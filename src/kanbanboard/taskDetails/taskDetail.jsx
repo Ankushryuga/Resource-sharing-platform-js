@@ -15,10 +15,10 @@ const taskName="This is dummy task for just for testing purpose and later on wil
 const dummyDescription=taskName;
 
 export default function TaskDetails() {
-  const [detailExpand, setDetailExpanded]=useState(true);
+  const [detailExpand, setDetailExpand]=useState(true);
   const [descriptionExpand, setDescriptionExpand]=useState(true);
   const [attachmentExpand, setAttachmentExpand]=useState(true);
-  
+  const [activity, setActivity]=useState(true);
   const {taskId}=useParams();
   return (
     <motion.div initial={{x:-100, opacity:0, rotateY:-10}}
@@ -45,7 +45,7 @@ export default function TaskDetails() {
             <p className="text-xs text-black font-medium pt-0.5">Edit</p>
           </motion.div>
 
-          <div onClick={()=>setDetailExpanded(!detailExpand)} className="flex items-center
+          <div onClick={()=>setDetailExpand(!detailExpand)} className="flex items-center
            gap-2 pt-5 cursor-pointer hover:opacity-80 transition">
             {detailExpand ?(
               <MdKeyboardArrowDown className="text-xl text-gray-700" />
@@ -142,6 +142,28 @@ export default function TaskDetails() {
 }
 <p className="text-sm text-gray-800 font-medium">Attachments</p>
           </div>
+          {attachmentExpand && (
+            <AnimatePresence>
+              <motion.div initial={{opacity:0, y:-5}}
+              animate={{opacity:1, y:0}}
+              exit={{opacity:0, y:-5}}
+              transition={{duration:0.2}}
+              className="pl-6 pt-4 space-y-4">
+                {/* <div className="relative w-full bg-white shadow-none">
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-500 rounded-tl-md"></div>
+                 <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-blue-500 rounded-br-md"></div>
+                  <p className="truncate text-gray-800">
+    This is a very long text that will be trimmed and won't wrap to the next line.
+                  </p>
+                </div> */}
+                <div className="flex justify-center items-center w-full p-4 bg-white border border-gray-300 rounded-md shadow-sm gap-2">
+                  <IoCloudUpload className="text-2xl"/>
+  <p className="truncate text-sm text-gray-800">This box has a subtle trim using border.</p>
+</div>
+
+              </motion.div>
+            </AnimatePresence>
+          )}
       </div>
 
     </motion.div>
