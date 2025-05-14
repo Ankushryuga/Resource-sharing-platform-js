@@ -166,7 +166,7 @@ export default function TaskBoard() {
                             navigate(
                               selectedTask?.taskId === task.taskId
                                 ? "/"
-                                : `/taskdetails`
+                                : `/taskdetails/${task.taskId}`
                             );
                           }
                         }}
