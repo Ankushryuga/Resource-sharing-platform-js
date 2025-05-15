@@ -8,6 +8,7 @@ import { useState } from "react";
 import { MdCheckBox } from "react-icons/md";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 import { IoCloudUpload } from "react-icons/io5";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 
 
@@ -18,13 +19,18 @@ export default function TaskDetails() {
   const [detailExpand, setDetailExpand]=useState(true);
   const [descriptionExpand, setDescriptionExpand]=useState(true);
   const [attachmentExpand, setAttachmentExpand]=useState(true);
-  const [activity, setActivity]=useState(true);
+  const [activityExpand, setActivityExpand]=useState(true);
+  const [peopleExpand, setPeopleExpand]=useState(true);
+  const [dateExpand, setDateExpand]=useState(true);
+
   const {taskId}=useParams();
   return (
+    <div className="flex">
+      <div className="w-3/4 flex-none">
     <motion.div initial={{x:-100, opacity:0, rotateY:-10}}
     animate={{x:0, opacity:1, rotateY:0}}
     transition={{type:"spring", stiffness:100, damping:15}}
-    className="flex flex-col h-full"
+    className="grid grid-cols-1 gap-4 h-full"
     >
       <div className="flex-1 overflow-y-auto space-y-1 p-4 hide-scrollbar bg-transparent">
         <span className="text-xs font-bold text-gray-700 flex gap-5">
@@ -89,16 +95,16 @@ export default function TaskDetails() {
                     <p className="text-sm text-gray-500 w-40">Priority:</p>
                     <div className="flex items-center gap-2 text-sm text-black">
                       <motion.div
-  whileHover={{
-    y: [0, -5, 0], // Bouncing effect
-    transition: {
-      repeat: Infinity,
-      duration: 0.6,
-      ease: "easeInOut"
-    }
-  }}
-  className="text-xl text-red-500"
->
+                        whileHover={{
+                          y: [0, -5, 0], // Bouncing effect
+                          transition: {
+                            repeat: Infinity,
+                            duration: 0.6,
+                            ease: "easeInOut"
+                          }
+                        }}
+                        className="text-xl text-red-500"
+                      >
                       <MdKeyboardDoubleArrowUp className="text-xl text-red-500"/>
                       </motion.div>
                       <span>Immediate</span>
@@ -114,7 +120,7 @@ export default function TaskDetails() {
                 </motion.div>
               </AnimatePresence>
           )}
-                    <div onClick={()=>setDescriptionExpand(!descriptionExpand)} className="flex items-center gap-2 pt-5 cursor-pointer hover:opacity-80 transition">
+              <div onClick={()=>setDescriptionExpand(!descriptionExpand)} className="flex items-center gap-2 pt-5 cursor-pointer hover:opacity-80 transition">
             {descriptionExpand ? (
               <MdKeyboardArrowDown className="text-xl text-gray-700" />
             ):<MdKeyboardArrowRight className="text-xl text-gray-800 font-medium" />}
@@ -139,8 +145,8 @@ export default function TaskDetails() {
             {attachmentExpand ?(
               <MdKeyboardArrowDown className="text-xl text-gray-700" />
             ):<MdKeyboardArrowRight className="text-xl text-gray-800 font-medium"/>
-}
-<p className="text-sm text-gray-800 font-medium">Attachments</p>
+          }
+          <p className="text-sm text-gray-800 font-medium">Attachments</p>
           </div>
           {attachmentExpand && (
             <AnimatePresence>
@@ -160,12 +166,110 @@ export default function TaskDetails() {
                   <IoCloudUpload className="text-2xl"/>
   <p className="truncate text-sm text-gray-800">This box has a subtle trim using border.</p>
 </div>
-
+              </motion.div>
+            </AnimatePresence>
+          )}
+          <div onClick={()=>setActivityExpand(!activityExpand)} className="flex items-center gap-2 pt-5 cursor-pointer hover:opacity-80 transition">
+            {activityExpand ?(
+              <MdKeyboardArrowDown className="text-xl text-gray-700" />
+            ):<MdKeyboardArrowRight className="text-xl text-gray-800 font-medium" />}
+            <p className="text-sm text-gray-800 font-medium">Activity</p>
+          </div>
+          {/* Activity Expand: */}
+          {activityExpand && (
+            <AnimatePresence>
+              <motion.div initial={{opacity:0, y:-5}}
+              animate={{opacity:1, y:0}}
+              exit={{opacity:0, y:-5}}
+              transition={{duration:0.2}}
+              className="pl-6 pt-4 space-y-2"
+              >
+                <div className="flex items-center gap-10">
+                  <button className="text-sm text-gray-700 font-medium bg-white border-none">History</button>
+                  <button className="text-sm text-gray-700 font-medium bg-white border-none">Attachments</button>
+                {/* <p className="text-sm text-gray-500 w-full"></p> */}
+                </div>
+              <hr className="w-full h-0.5 mx-auto bg-gray-400 border-0 rounded-sm dark:bg-gray-700" />
               </motion.div>
             </AnimatePresence>
           )}
       </div>
-
     </motion.div>
+    </div>
+    <div className="w-1/4">
+          <div onClick={()=>setPeopleExpand(!peopleExpand)}
+        className="pt-40 flex items-center  gap-2 cursor-pointer hover:opacity-80 transition"
+        > {peopleExpand?(
+          <MdKeyboardArrowDown className="text-xl text-gray-700" />
+        ):<MdKeyboardArrowRight className="text-xl text-gray-800 font-medium"/>}
+      <p className="text-sm text-gray-800 font-medium">People</p>
+        </div>
+        {/* People: */}
+        {peopleExpand && (
+          <AnimatePresence>
+            <motion.div initial={{opacity:0, y:-5}}
+            animate={{opacity:1, y:0}}
+            exit={{opacity:0, y:-5}}
+            transition={{duration:0.2}}
+            className="pl-6 pt-4">
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-gray-500 w-30">Assignee: </p>
+                <div className="flex items-center gap-2 text-sm text-black">
+                  <IoPersonCircleSharp  className="text-xl text-gray-700" />
+                    <span>Ankush raj <span className="text-blue-600">(me)</span></span>
+                </div>
+              </div>
+                <div className="flex items-center gap-2 pt-5">
+                <p className="text-sm text-gray-500 w-30">Reporter: </p>
+                <div className="flex items-center gap-2 text-sm text-black">
+                  <IoPersonCircleSharp className="text-xl text-gray-700"/>
+                  <span>Banti</span>
+                </div>
+                </div>
+                <div className="flex items-center gap-2 pt-5">
+                    <p className="text-sm text-gray-500 w-30">Watchers: </p>
+                    <div className="flex items-center gap-2 text-sm text-black">
+                      {3}
+                    </div>
+                </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+        <div onClick={()=>setDateExpand(!dateExpand)}
+        className="pt-5 flex gap-2 cursor-pointer hover:opacity-80 transition items-center"
+          > {dateExpand?(
+            <MdKeyboardArrowDown className="text-xl text-gray-700" />
+          ):<MdKeyboardArrowRight className="text-xl text-gray-800 font-medium" />}
+          <p className="text-sm text-gray-800 font-medium">Dates</p>
+        </div>
+        {dateExpand && (
+          <AnimatePresence>
+            <motion.div initial={{opacity:0, y:-5}}
+            animate={{opacity:1, y:0}}
+            exit={{opacity:0, y:-5}}
+            transition={{duration:0.2}}
+            className="pl-6 pt-4"
+            >
+                <div className="flex items-center gap-2">
+                    <p className="text-sm text-gray-500 w-30">Due:</p>
+                    <span className="text-sm text-black">06/May/2025</span>
+                </div>
+                {/* <div className="flex items-center gap-2 pt-4"> */}
+                  <div className="flex items-center gap-2 pt-4">
+                      <p className="text-sm text-gray-500 w-30">CreatedAt: </p>
+                      <span className="text-sm text-black">06/May/2025</span>
+                  </div>
+                {/* </div> */}
+                <div className="flex items-center gap-2 pt-4">
+                  <p className="text-sm text-gray-500 w-30">Last UpdatedAt: </p>
+                  <span className="text-sm text-black">04/May/2025</span>
+                </div>
+            </motion.div>
+            
+
+          </AnimatePresence>
+        )}
+    </div>
+    </div>
   );
 }
