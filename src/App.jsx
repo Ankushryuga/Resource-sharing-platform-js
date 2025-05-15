@@ -8,16 +8,19 @@ import { SelectedTaskProvider } from "./context/selectedTaskContext";
 const App = () => {
   return (
     <SelectedTaskProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route index element={<TaskDashBoard />} />
-          <Route path="task/:contentId" element={<TaskBoard />} />
-          <Route path="taskdetails/:taskId" element={<TaskDetails />} />{" "}
-          {/* dynamic task route */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DefaultLayout />}>
+            <Route index element={<TaskDashBoard />} />
+            <Route path="workstreams/:contentId" element={<TaskBoard />} />
+            <Route
+              path="workstreams/assignmentDetails/:taskId"
+              element={<TaskDetails />}
+            />{" "}
+            {/* dynamic task route */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </SelectedTaskProvider>
   );
 };

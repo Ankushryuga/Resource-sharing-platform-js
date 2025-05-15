@@ -12,8 +12,13 @@ import { useSelectedTask } from "../context/selectedTaskContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { selectedTaskName } = useSelectedTask(); // ✅ Move hook inside component
-  const navigate=useNavigate();
+  const {
+    setSelectedTaskName,
+    selectedTaskName,
+    setSelectedWorkstream,
+    selectedWorkstream,
+  } = useSelectedTask(); // ✅ Move hook inside component
+  const navigate = useNavigate();
 
   return (
     <header className="h-14 bg-white px-4 sm:px-6 shadow-sm flex items-center justify-between">
@@ -26,18 +31,28 @@ const Header = () => {
         </div>
 
         {/* Folder path */}
-        <div className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0"
-        onClick={()=>navigate("/")}
+        <div
+          className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0"
+          onClick={() => {
+            navigate("/");
+            setSelectedTaskName("");
+            setSelectedWorkstream(null);
+          }}
         >
           <GoFileDirectory className="text-base" />
-          <span>Tasks</span>
+          <span>Workstreams</span>
         </div>
 
         {/* Dynamic task name path */}
-        {selectedTaskName && (
+        {selectedTaskName && selectedWorkstream && (
           <>
             <RxSlash className="text-xs text-gray-400 shrink-0" />
-            <div className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0">
+            <div
+              onClick={() => {
+                navigate(`workstreams/${selectedWorkstream}`);
+              }}
+              className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0"
+            >
               <GoFileDirectory className="text-base" />
               <span>{selectedTaskName}</span>
             </div>

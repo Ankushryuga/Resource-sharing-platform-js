@@ -6,6 +6,7 @@ import { GoFileSubmodule } from "react-icons/go";
 import { IoMdLogOut } from "react-icons/io";
 import { GiBackwardTime } from "react-icons/gi";
 import { MdDownloadForOffline } from "react-icons/md";
+import { MdWorkspacesFilled } from "react-icons/md";
 
 const name = "Ankush";
 
@@ -21,6 +22,11 @@ const MenuItems = [
     icon: (
       <FaPlus className="text-purple-800 text-base bg-white p-1 rounded-full border border-purple-800 shadow transition" />
     ),
+  },
+  {
+    label: "Workstreams",
+    path: "/Workstreams",
+    icon: <MdWorkspacesFilled className="text-2xl" />,
   },
   {
     label: "Notifications",
@@ -42,11 +48,11 @@ const MenuItems = [
     path: "/favourites",
     icon: <FcBookmark className="text-2xl" />,
     children: [
-      {
-        label: "Tasks",
-        path: "/mytasks",
-        icon: <PiNotebookFill className="text-2xl" />,
-      },
+      // {
+      //   label: "Tasks",
+      //   path: "/mytasks",
+      //   icon: <PiNotebookFill className="text-2xl" />,
+      // },
     ],
   },
   {

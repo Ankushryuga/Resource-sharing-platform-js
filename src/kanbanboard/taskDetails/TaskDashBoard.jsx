@@ -6,7 +6,7 @@ import { useSelectedTask } from "../../context/selectedTaskContext";
 const TaskDashBoard = () => {
   const navigate = useNavigate();
   const tasks = getTaskDashBoard?.data;
-  const {setSelectedTaskName}=useSelectedTask();
+  const { setSelectedTaskName, setSelectedWorkstream } = useSelectedTask();
 
   return (
     <div className="flex h-full">
@@ -17,8 +17,10 @@ const TaskDashBoard = () => {
               <div
                 key={task.contentId}
                 onClick={() => {
-                    setSelectedTaskName(task.contentName);  //Set name globally..
-                    navigate(`/task/${task.contentId}`)}}
+                  setSelectedWorkstream(task.contentId);
+                  setSelectedTaskName(task.contentName); //Set name globally..
+                  navigate(`/workstreams/${task.contentId}`);
+                }}
                 className="bg-white rounded-xl p-4 shadow transition-transform duration-300 ease-in-out hover:scale-[1.02] relative cursor-pointer"
                 style={{ borderLeft: `5px solid #3b4ca3` }}
               >
@@ -45,9 +47,12 @@ const TaskDashBoard = () => {
             // <div className="col-span-full flex items-center justify-center h-[60vh]">
             <div className="col-span-full flex flex-col items-center justify-center text-center bg-gray-50 border border-dashed border-gray-300 p-10 rounded-xl h-[80vh]">
               <IoDocumentTextOutline className="text-4xl text-gray-400 mb-2" />
-              <h2 className="text-lg font-semibold text-gray-600">No Tasks Available</h2>
+              <h2 className="text-lg font-semibold text-gray-600">
+                No Workstreams Available
+              </h2>
               <p className="text-sm text-gray-500 mt-1">
-                You haven’t created any tasks yet. Once available, they’ll appear here.
+                You haven’t created any workstreams yet. Once available, they’ll
+                appear here.
               </p>
             </div>
             // </div>

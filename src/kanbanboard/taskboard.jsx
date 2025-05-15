@@ -166,7 +166,7 @@ export default function TaskBoard() {
                             navigate(
                               selectedTask?.taskId === task.taskId
                                 ? "/"
-                                : `/taskdetails/${task.taskId}`
+                                : `/workstreams/assignmentDetails/${task.taskId}`
                             );
                           }
                         }}
