@@ -15,7 +15,7 @@ import { SortableItem } from "./SortableItem";
 import { DroppableColumn } from "./DroppableColumn";
 import taskDataRaw from "../dummyResponseData/getAllTasks.json";
 import configurations from "../config/config";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const statusOrder = [
   { key: "todo", label: "TO DO" },
