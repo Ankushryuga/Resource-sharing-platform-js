@@ -72,16 +72,16 @@ const MenuItems = [
     path: "/myFiles",
     icon: <GoFileSubmodule className="text-xl" />,
     children: [
-      {
-        label: "Course-Name-Value-Field-1",
-        path: "/course1",
-        icon: <PiNotebookFill className="text-xl" />,
-      },
-      ...Array.from({ length: 15 }, (_, i) => ({
-        label: `Course-${i + 2}`,
-        path: `/course${i + 2}`,
-        icon: <PiNotebookFill className="text-xl" />,
-      })),
+      // {
+      //   label: "Course-Name-Value-Field-1",
+      //   path: "/course1",
+      //   icon: <PiNotebookFill className="text-xl" />,
+      // },
+      // ...Array.from({ length: 15 }, (_, i) => ({
+      //   label: `Course-${i + 2}`,
+      //   path: `/course${i + 2}`,
+      //   icon: <PiNotebookFill className="text-xl" />,
+      // })),
     ],
   },
   {
