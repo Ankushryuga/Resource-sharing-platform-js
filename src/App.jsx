@@ -1,6 +1,6 @@
 import TaskDetails from "./kanbanboard/taskDetails/taskDetail";
 import TaskBoard from "./kanbanboard/taskboard"; // Assuming this is your main board
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import DefaultLayout from "./layouts/defaultLayout";
 import TaskDashBoard from "./kanbanboard/taskDetails/TaskDashBoard";
 import { SelectedTaskProvider } from "./context/selectedTaskContext";
@@ -18,6 +18,9 @@ const App = () => {
               element={<TaskDetails />}
             />{" "}
             {/* dynamic task route */}
+
+            {/* Catch-all route for 404s */}
+            <Route path="*" element={<Navigate to="/" replace />}/>
           </Route>
         </Routes>
       </BrowserRouter>

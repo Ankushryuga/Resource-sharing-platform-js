@@ -40,7 +40,7 @@ const Header = () => {
           }}
         >
           <GoFileDirectory className="text-base" />
-          <span>Workstreams</span>
+          <span>Active Workstreams</span>
         </div>
 
         {/* Dynamic task name path */}
