@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SideMenuData from "../navigation/sideMenuData";
-import  MenuItems from "../config/sideMenuConfig";
+import MenuItems from "../config/sideMenuConfig";
 const SideMenu = () => {
   // Extract fixed top and bottom items
   const topItem = MenuItems[0];
@@ -24,7 +24,9 @@ const SideMenu = () => {
         {middleItems.map((item, idx) => (
           <div
             key={idx}
-            className={item.label === createNewButton ? "bg-white/10 rounded" : ""}
+            className={
+              item.label === createNewButton ? "bg-white/10 rounded" : ""
+            }
           >
             <SideMenuData item={item} />
           </div>

@@ -35,7 +35,7 @@ const DefaultLayout = () => {
     <div className="flex h-screen">
       {/* Sidebar */}
       <div
-        className="w-60 text-white items-center"
+        className="w-50 text-white items-center"
         style={{ backgroundColor: "#0b1b36" }}
       >
         <SideMenu />
