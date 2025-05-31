@@ -1,12 +1,50 @@
 import { useNavigate } from "react-router-dom";
-import getTaskDashBoard from "../../dummyResponseData/getTaskDashboard.json";
+
+//dummy data:
 import { IoDocumentTextOutline } from "react-icons/io5"; // Optional icon for empty state
 import { useSelectedTask } from "../../context/selectedTaskContext";
+import configurations from "../../config/config";
+import { useEffect, useState } from "react";
+const baseURL = configurations.baseURL;
 
-const TaskDashBoard = () => {
+const WorkStreamDashBoard = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [cacheWorkStream, setCacheWorkStream] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
-  const tasks = getTaskDashBoard?.data;
+  // const tasks = getTaskDashBoard?.data;
   const { setSelectedTaskName, setSelectedWorkstream } = useSelectedTask();
+  const value = "john_doe";
+  const fetchWorkStreamData = async () => {
+    if (cacheWorkStream.length > 0) {
+      setTasks(cacheWorkStream);
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        `${baseURL}workstreams/getAllWorkstreams?owner=${value}`
+        // baseURL + "/workstreams/getAllWorkstreams?owner=" + value
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch workstreams");
+      }
+      const json = await response.json();
+      setTasks(json);
+      setCacheWorkStream(json);
+    } catch (error) {
+      console.log("Error occured whiled fetching data");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchWorkStreamData();
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="flex h-full">
@@ -15,11 +53,11 @@ const TaskDashBoard = () => {
           {tasks?.length > 0 ? (
             tasks.map((task) => (
               <div
-                key={task.contentId}
+                key={task.workStreamId}
                 onClick={() => {
-                  setSelectedWorkstream(task.contentId);
+                  setSelectedWorkstream(task.workStreamId);
                   setSelectedTaskName(task.contentName); //Set name globally..
-                  navigate(`/workstreams/${task.contentId}`);
+                  navigate(`/workstreams/${task.workStreamId}`);
                 }}
                 className="bg-white rounded-xl p-4 shadow transition-transform duration-300 ease-in-out hover:scale-[1.02] relative cursor-pointer"
                 style={{ borderLeft: `5px solid #3b4ca3` }}
@@ -30,6 +68,9 @@ const TaskDashBoard = () => {
                 >
                   {task.contentName}
                 </h3>
+                <p className="text-sm font-semibold text-gray-500 truncate">
+                  Info: {task.contentDescription}
+                </p>
                 <div className="flex items-center justify-between mt-1 pt-5">
                   <p className="text-sm text-gray-500 truncate">
                     Owner: {task.owner}
@@ -63,4 +104,4 @@ const TaskDashBoard = () => {
   );
 };
 
-export default TaskDashBoard;
+export default WorkStreamDashBoard;
