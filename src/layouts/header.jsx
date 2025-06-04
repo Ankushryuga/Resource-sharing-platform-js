@@ -1,4 +1,3 @@
-import React from "react";
 import { GoFileDirectory } from "react-icons/go";
 import { MdOutlineStarBorder } from "react-icons/md";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -17,9 +16,9 @@ const Header = () => {
     selectedTaskName,
     setSelectedWorkstream,
     selectedWorkstream,
+    rootFolder,
   } = useSelectedTask(); // ✅ Move hook inside component
   const navigate = useNavigate();
-
   return (
     <header className="h-14 bg-white px-4 sm:px-6 shadow-sm flex items-center justify-between">
       {/* Left section: Navigation path */}
@@ -34,22 +33,23 @@ const Header = () => {
         <div
           className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0"
           onClick={() => {
-            navigate("/");
+            navigate("/dashboard");
             setSelectedTaskName("");
             setSelectedWorkstream(null);
           }}
         >
           <GoFileDirectory className="text-base" />
-          <span>Active Workstreams</span>
+          {/* <span>Active Workstreams</span> */}
+          <span>{rootFolder}</span>
         </div>
 
         {/* Dynamic task name path */}
-        {selectedTaskName && selectedWorkstream && (
+        {selectedWorkstream && selectedTaskName && (
           <>
             <RxSlash className="text-xs text-gray-400 shrink-0" />
             <div
               onClick={() => {
-                navigate(`workstreams/${selectedWorkstream}`);
+                navigate(`/dashboard/workstreams/${selectedWorkstream}`);
               }}
               className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0"
             >

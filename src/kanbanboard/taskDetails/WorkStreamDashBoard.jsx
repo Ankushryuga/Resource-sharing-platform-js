@@ -2,19 +2,22 @@ import { useNavigate } from "react-router-dom";
 
 //dummy data:
 import { IoDocumentTextOutline } from "react-icons/io5"; // Optional icon for empty state
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useSelectedTask } from "../../context/selectedTaskContext";
 import configurations from "../../config/config";
 import { useEffect, useState } from "react";
 const baseURL = configurations.baseURL;
 
-const WorkStreamDashBoard = () => {
+const WorkStreamDashBoard = ({ active }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [cacheWorkStream, setCacheWorkStream] = useState([]);
+  const [cacheInActiveWorkStream, setCacheInActiveWorkStream] = useState([]);
+
   const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
   // const tasks = getTaskDashBoard?.data;
   const { setSelectedTaskName, setSelectedWorkstream } = useSelectedTask();
-  const value = "john_doe";
+  const value = "ankushraj";
   const fetchWorkStreamData = async () => {
     if (cacheWorkStream.length > 0) {
       setTasks(cacheWorkStream);
@@ -39,17 +42,45 @@ const WorkStreamDashBoard = () => {
     }
   };
 
+  const fetchInActiveWorkStreamData = async () => {
+    if (cacheInActiveWorkStream.length > 0) {
+      setTasks(cacheInActiveWorkStream);
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        `${baseURL}workstreams/getAllInActiveWorkstreams?owner=${value}`
+      );
+      if (!response.ok) {
+        throw new Error("Faied to fetch workstreams");
+      }
+      const json = await response.json();
+      setTasks(json);
+      setCacheInActiveWorkStream(json);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  console.log("active", active);
   useEffect(() => {
     const fetchData = async () => {
-      await fetchWorkStreamData();
+      setTasks([]);
+      if (active === true) {
+        await fetchWorkStreamData();
+      } else {
+        await fetchInActiveWorkStreamData();
+      }
     };
     fetchData();
-  }, []);
+  }, [active]);
 
   return (
     <div className="flex h-full">
       <div className="flex-1 overflow-y-auto pt-3">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-2 lg:px-4 py-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-2 lg:px-4 py-4">
           {tasks?.length > 0 ? (
             tasks.map((task) => (
               <div
@@ -57,17 +88,21 @@ const WorkStreamDashBoard = () => {
                 onClick={() => {
                   setSelectedWorkstream(task.workStreamId);
                   setSelectedTaskName(task.contentName); //Set name globally..
-                  navigate(`/workstreams/${task.workStreamId}`);
+                  navigate(`/dashboard/workstreams/${task.workStreamId}`);
                 }}
                 className="bg-white rounded-xl p-4 shadow transition-transform duration-300 ease-in-out hover:scale-[1.02] relative cursor-pointer"
                 style={{ borderLeft: `5px solid #3b4ca3` }}
               >
-                <h3
-                  className="text-md font-semibold text-gray-800 truncate"
-                  title={task.contentName}
-                >
-                  {task.contentName}
-                </h3>
+                <div className="flex items-center justify-between w-full">
+                  <h3
+                    className="text-md font-semibold text-gray-800 truncate"
+                    title={task.contentName}
+                  >
+                    <span className="text-gray-500">Project Name: </span>
+                    {task.contentName}
+                  </h3>
+                  <BiDotsHorizontalRounded className="text-lg hover:transition-all" />
+                </div>
                 <p className="text-sm font-semibold text-gray-500 truncate">
                   Info: {task.contentDescription}
                 </p>
