@@ -9,8 +9,8 @@ import defaultConfig from "../config/config";
 import { FaCircle } from "react-icons/fa";
 import { useSelectedTask } from "../context/selectedTaskContext";
 import { useNavigate } from "react-router-dom";
-
-const Header = () => {
+//createNewType==workstream, sprint, task.
+const Header = ({ createNewType }) => {
   const {
     setSelectedTaskName,
     selectedTaskName,
@@ -19,6 +19,10 @@ const Header = () => {
     rootFolder,
   } = useSelectedTask(); // ✅ Move hook inside component
   const navigate = useNavigate();
+  const handleNavigation = () => {
+    if (createNewType === "workstream")
+      navigate("/dashboard/createnewworkstreams");
+  };
   return (
     <header className="h-14 bg-white px-4 sm:px-6 shadow-sm flex items-center justify-between">
       {/* Left section: Navigation path */}
@@ -88,7 +92,10 @@ const Header = () => {
           <AiFillLike />
         </IconWrapper>
         <IconWrapper>
-          <BsFillPlusSquareFill />
+          <BsFillPlusSquareFill
+            onClick={handleNavigation}
+            // onClick={openModal}
+          />
         </IconWrapper>
         <IconWrapper>
           <IoSearchSharp />

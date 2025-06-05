@@ -80,7 +80,7 @@ const WorkStreamDashBoard = ({ active }) => {
   return (
     <div className="flex h-full">
       <div className="flex-1 overflow-y-auto pt-3">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-2 lg:px-4 py-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2 lg:px-4 py-4">
           {tasks?.length > 0 ? (
             tasks.map((task) => (
               <div
@@ -103,10 +103,82 @@ const WorkStreamDashBoard = ({ active }) => {
                   </h3>
                   <BiDotsHorizontalRounded className="text-lg hover:transition-all" />
                 </div>
-                <p className="text-sm font-semibold text-gray-500 truncate">
+                <p className="text-sm font-semibold text-gray-500 truncate pt-2">
                   Info: {task.contentDescription}
                 </p>
-                <div className="flex items-center justify-between mt-1 pt-5">
+
+                {/* Managers list:: */}
+                {/*                 
+                <div className="flex items-center justify-between pt-2 text-sm">
+                  <span className="text-gray-700 font-medium pr-2">
+                    Managers:
+                  </span>
+                  <div className="flex gap-1">
+                    {task.managers.map((manager, idx) => (
+                      <div
+                        key={idx}
+                        className="w-6 h-6 flex items-center justify-center rounded-full text-white text-sm font-bold shrink-0 ml-1"
+                        style={{ backgroundColor: "#3b4ca3" }}
+                        title={manager.username}
+                      >
+                        {manager.username[0]?.toUpperCase()}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center justify-between pt-2 text-sm">
+                  <span className="text-gray-700 font-medium pr-2">
+                    Reporters:
+                  </span>
+                  <div className="flex gap-1">
+                    {task.reporters.map((reporter, idx) => (
+                      <div
+                        key={idx}
+                        className="w-6 h-6 flex items-center justify-center rounded-full text-white text-sm font-bold shrink-0 ml-1"
+                        style={{ backgroundColor: "#3b4ca3" }}
+                        title={reporter.username}
+                      >
+                        {reporter.username[0]?.toUpperCase()}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-2 text-sm">
+                  <span className="text-gray-700 font-medium pr-2">
+                    Testers:
+                  </span>
+                  <div className="flex gap-1">
+                    {task.testers.map((tester, idx) => (
+                      <div
+                        key={idx}
+                        className="w-6 h-6 flex items-center justify-center rounded-full text-white text-sm font-black shrink-0 ml-1"
+                        style={{ backgroundColor: "#3b4ca3" }}
+                        title={tester.username}
+                      >
+                        {tester.username[0]?.toUpperCase()}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center justify-between pt-2 text-sm">
+                  <span className="text-gray-700 font-medium pr-2">
+                    Members:
+                  </span>
+                  <div className="flex gap-1">
+                    {task.contributers.map((members, idx) => (
+                      <div
+                        key={idx}
+                        className="w-6 h-6 flex items-center justify-center rounded-full text-white text-sm font-bold shrink-0 ml-1"
+                        style={{ backgroundColor: "#3b4ca3" }}
+                        title={members.username}
+                      >
+                        {members.username[0]?.toUpperCase()}
+                      </div>
+                    ))}
+                  </div>
+                </div> */}
+                <div className="flex items-center justify-between pt-5">
                   <p className="text-sm text-gray-500 truncate">
                     Owner: {task.owner}
                   </p>

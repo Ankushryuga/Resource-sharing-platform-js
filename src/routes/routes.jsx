@@ -15,7 +15,9 @@ const TaskBoard = lazy(() => import("../kanbanboard/taskboard"));
 const WorkStreamDashBoard = lazy(() =>
   import("../kanbanboard/taskDetails/WorkStreamDashBoard")
 );
-
+const CreateNewWorkStreamModel = lazy(() =>
+  import("../kanbanboard/taskDetails/CreateNewWorkStreamModel")
+);
 const AppRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -39,6 +41,10 @@ const AppRoutes = () => {
           <Route
             path="inactiveworkstreams"
             element={<WorkStreamDashBoard active={false} />}
+          />
+          <Route
+            path="createnewworkstreams"
+            element={<CreateNewWorkStreamModel />}
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
