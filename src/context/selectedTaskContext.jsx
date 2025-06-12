@@ -44,6 +44,8 @@ export const SelectedTaskProvider = ({ children }) => {
   const [selectedTaskName, setSelectedTaskName] = useState("");
   const [selectedWorkstream, setSelectedWorkstream] = useState(null);
   const [rootFolder, setRootFolder] = useState("Active Workstreams");
+  const [selectedSprintName, setSelectedSprintName]=useState("");
+  const [sprintIndex, setSprintIndex]=useState(null);
   return (
     <SelectedTaskContext.Provider
       value={{
@@ -53,6 +55,10 @@ export const SelectedTaskProvider = ({ children }) => {
         setSelectedWorkstream,
         rootFolder,
         setRootFolder,
+        selectedSprintName,
+        setSelectedSprintName,
+        sprintIndex,
+        setSprintIndex
       }}
     >
       {children}

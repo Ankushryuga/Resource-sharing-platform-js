@@ -12,17 +12,22 @@ import { useNavigate } from "react-router-dom";
 //createNewType==workstream, sprint, task.
 const Header = ({ createNewType }) => {
   const {
-    setSelectedTaskName,
-    selectedTaskName,
+    setSelectedTaskName,  //name of workstream
+    selectedTaskName,   
     setSelectedWorkstream,
     selectedWorkstream,
     rootFolder,
+    sprintIndex,
+    setSprintIndex,
+    selectedSprintName,
+    setSelectedSprintName
   } = useSelectedTask(); // ✅ Move hook inside component
   const navigate = useNavigate();
   const handleNavigation = () => {
     if (createNewType === "workstream")
       navigate("/dashboard/createnewworkstreams");
   };
+  console.log(selectedSprintName);
   return (
     <header className="h-14 bg-white px-4 sm:px-6 shadow-sm flex items-center justify-between">
       {/* Left section: Navigation path */}
@@ -40,6 +45,8 @@ const Header = ({ createNewType }) => {
             navigate("/dashboard");
             setSelectedTaskName("");
             setSelectedWorkstream(null);
+            setSelectedSprintName(null);
+            setSprintIndex(null);
           }}
         >
           <GoFileDirectory className="text-base" />
@@ -54,12 +61,29 @@ const Header = ({ createNewType }) => {
             <div
               onClick={() => {
                 navigate(`/dashboard/workstreams/${selectedWorkstream}`);
+                setSelectedSprintName(null);
               }}
               className="flex items-center space-x-1 hover:text-blue-600 transition-colors duration-200 cursor-pointer shrink-0"
             >
               <GoFileDirectory className="text-base" />
               <span>{selectedTaskName}</span>
             </div>
+          </>
+        )}
+
+        {selectedWorkstream && selectedTaskName && selectedSprintName && (
+          <>
+          <RxSlash className="text-xs text-gray-400 shrink-0" />
+          <div onClick={()=>
+            {
+              navigate(`/dashboard/workstreams/${selectedWorkstream}/sprint/${sprintIndex}`)
+            }
+          }
+          className="flex items-center space-x-1 hover::text-blur-600 transition-colors duration-200 cursor-pointer shrink-0"
+          >
+            <GoFileDirectory className="text-base" />
+            <span>{selectedSprintName}</span>
+          </div>
           </>
         )}
 

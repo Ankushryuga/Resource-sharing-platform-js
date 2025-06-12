@@ -6,6 +6,7 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useSelectedTask } from "../../context/selectedTaskContext";
 import configurations from "../../config/config";
 import { useEffect, useState } from "react";
+import getTaskDashBoard from "../../dummyResponseData/getTaskDashboard.json"
 const baseURL = configurations.baseURL;
 
 const WorkStreamDashBoard = ({ active }) => {
@@ -13,9 +14,9 @@ const WorkStreamDashBoard = ({ active }) => {
   const [cacheWorkStream, setCacheWorkStream] = useState([]);
   const [cacheInActiveWorkStream, setCacheInActiveWorkStream] = useState([]);
 
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
-  // const tasks = getTaskDashBoard?.data;
+  const tasks = getTaskDashBoard?.data;
   const { setSelectedTaskName, setSelectedWorkstream } = useSelectedTask();
   const value = "ankushraj";
   const fetchWorkStreamData = async () => {
@@ -64,7 +65,6 @@ const WorkStreamDashBoard = ({ active }) => {
       setIsLoading(false);
     }
   };
-  console.log("active", active);
   useEffect(() => {
     const fetchData = async () => {
       setTasks([]);

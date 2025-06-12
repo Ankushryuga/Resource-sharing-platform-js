@@ -1,0 +1,116 @@
+{
+    "currentSprints":
+    [
+        {
+            "sprintId":1,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },
+        {
+            "sprintId":2,
+            "sprintName":"Long Dummy Sprint Value with some way huge data to check truncate is working or not",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },
+        {
+            "sprintId":3,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },{
+            "sprintId":4,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        }
+        ,{
+            "sprintId":5,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },
+        {
+            "sprintId":6,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },
+        {
+            "sprintId":7,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },
+        {
+            "sprintId":8,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },{
+            "sprintId":9,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        }
+        ,{
+            "sprintId":10,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        },{
+            "sprintId":11,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Open"
+        }
+    ],
+    "closedSprints":
+    [
+        {
+            "sprintId":1,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Closed"
+        },
+        {
+            "sprintId":2,
+            "sprintName":"Long Dummy Sprint Value with some way huge data to check truncate is working or not",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Closed"
+        },
+        {
+            "sprintId":3,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Closed"
+        },{
+            "sprintId":4,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Closed"
+        }
+        ,{
+            "sprintId":5,
+            "sprintName":"Dummy Sprint Value",
+            "createdBy":"Ankush Raj",
+            "dueDate":"2 Aug - 30 Aug",
+            "sprintStatus":"Closed"
+        }
+    ]
+}
