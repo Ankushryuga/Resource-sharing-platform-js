@@ -6,13 +6,13 @@ import AppRoutes from "./routes/routes";
 
 const App = () => {
   return (
-    // <AuthProvider>
+    <AuthProvider>
       <SelectedTaskProvider>
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>
       </SelectedTaskProvider>
-    // </AuthProvider>
+    </AuthProvider>
   );
 };
 

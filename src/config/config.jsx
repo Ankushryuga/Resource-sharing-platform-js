@@ -1,5 +1,5 @@
 const configurations = {
-  baseURL: "http://192.168.1.33:5001/",
+  baseURL: "http://192.168.1.5:5001/",
 
   headerTaskPriorityInformations: [
     { name: "Immediate", colorCode: "FF0000" },
